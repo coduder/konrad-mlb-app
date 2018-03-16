@@ -1,4 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component } from '@angular/core';
 import { Team } from '../models/team';
 
 @Component({
@@ -6,11 +6,6 @@ import { Team } from '../models/team';
   templateUrl: './batter-info.component.html',
   styleUrls: ['./batter-info.component.css']
 })
-export class BatterInfoComponent implements OnInit {
-  @Input() team: Team;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class BatterInfoComponent  {
+  @Input() team: Team;  // Team with batters
 }

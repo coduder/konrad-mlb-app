@@ -52,6 +52,5 @@
         <a [ngClass]="{'currentTeam' : currentTeam.teamName === homeTeam.teamName}" (click)="showBatters(homeTeam)">{{homeTeam.teamName}}</a>|<a [ngClass]="{'currentTeam' : currentTeam.teamName === awayTeam.teamName}" (click)="showBatters(awayTeam)">{{awayTeam.teamName}}</a>
     </div>
 
-
     <app-batter-info *ngIf="currentTeam" [team]="currentTeam"></app-batter-info>
 </div>

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatSelectModule, MatOptionModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -34,6 +34,8 @@ import { BatterInfoComponent } from './batter-info/batter-info.component';
     MatFormFieldModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatSelectModule,
+    MatOptionModule,
     MatInputModule,
     HttpClientModule,
     RouterModule.forRoot([

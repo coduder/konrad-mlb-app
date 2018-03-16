@@ -11,7 +11,7 @@ export class GamedayDetailComponent implements OnInit {
   @Input() boxscore: Boxscore;
   homeTeam: Team;
   awayTeam: Team;
-  currentTeam: Team;
+  currentTeam: Team;  // Team whose batters are currently displayed
 
   constructor() { }
 
@@ -21,7 +21,11 @@ export class GamedayDetailComponent implements OnInit {
     this.currentTeam = this.homeTeam;
   }
 
-  showBatters(team:Team){
+  /**
+   * Changes current team to param team in order to display chosen team
+   * @param team Team to show
+   */
+  showBatters(team: Team) {
     this.currentTeam = team;
   }
 

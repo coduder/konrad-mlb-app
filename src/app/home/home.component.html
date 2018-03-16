@@ -1,4 +1,4 @@
-<h1>Select a date below to view scores of MLB games played that day</h1>
+<h1>Pick Date to See Games</h1>
 <form>
     <mat-form-field>
         <input #userDate='ngModel' matInput [(ngModel)]="date" name="datepicker" [matDatepicker]="picker" placeholder="Choose a date">
@@ -10,4 +10,3 @@
         Please pick date from the date picker or enter in form DD/MM/YYYY
     </div>
 </form>
-<!-- <app-gameday-summary *ngIf="gamesOfDay" [games]="gamesOfDay" [date]="date"></app-gameday-summary> -->
