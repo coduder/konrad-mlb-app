@@ -1,6 +1,7 @@
 # MlbApp
 
 Simple gd2-mlb api game results and stats app for specific days.
+All data gathered from https://gd2.mlb.com/components/game/mlb/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 ## Navigating the App
