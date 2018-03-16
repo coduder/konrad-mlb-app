@@ -1,0 +1,42 @@
+.container {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-flow: column;
+}
+
+.indv-game {
+    border: 1px solid white;
+    padding: 5px 10px 5px 10px;
+    order: 2;
+    display: flex;
+    flex-flow: column;
+}
+
+.indv-game div {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.indv-game div span {
+    display: block;
+}
+
+div.favoriteTeam {
+    order: 1;
+}
+
+.team-winner {
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1rem;
+    padding: 20px;
+}
+
+p {
+    display: inline-block;
+}

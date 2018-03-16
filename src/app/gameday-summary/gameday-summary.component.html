@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="header">
+        <h1>
+            <a routerLink="/">&lt; {{date.toDateString()}} &gt;</a>
+        </h1>
+        <a *ngIf="showDetails" (click)="hideGameDetails()">Return to summary</a>
+    </div>
+    <ng-container *ngIf="!showDetails; else detailsView">
+        <ng-container *ngIf="games$ | async as allGames; else noGames">
+            <!--Use ngClass to set favorite team on iteration, then using flexblox order display favorite team first-->
+            <div class="indv-game" *ngFor="let game of allGames; let i = index" (click)="showGameDetails(game, i)" [ngClass]="{'favoriteTeam': game.homeTeamName === favoriteTeam || game.awayTeamName === favoriteTeam}">
+                <div [ngClass]="{'team-winner' : game.winner === 'h'}">
+                    <span>{{game.homeTeamName}} </span><span *ngIf="game.lineScore">{{game.lineScore.result.home}}</span>
+                </div>
+                <div [ngClass]="{'team-winner' : game.winner === 'a'}">
+                    <span>{{game.awayTeamName}} </span><span *ngIf="game.lineScore">{{game.lineScore.result.away}}</span>
+                </div>
+                <div>
+                    <span>{{game.status}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <ng-template #noGames>
+        <p>No Games today</p>
+    </ng-template>
+    <ng-template #detailsView>
+        <app-gameday-detail *ngIf="boxscore" [boxscore]="boxscore"></app-gameday-detail>
+    </ng-template>
+
+</div>

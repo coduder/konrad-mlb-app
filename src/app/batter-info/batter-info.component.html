@@ -1,0 +1,22 @@
+<table>
+    <tr>
+        <th>Name</th>
+        <th>AB</th>
+        <th>R</th>
+        <th>H</th>
+        <th>RBI</th>
+        <th>BB</th>
+        <th>SO</th>
+        <th>AVG</th>
+    </tr>
+    <tr *ngFor="let batter of team.batters">
+        <td>{{batter.name}}</td>
+        <td>{{batter.ab}}</td>
+        <td>{{batter.r}}</td>
+        <td>{{batter.h}}</td>
+        <td>{{batter.rbi}}</td>
+        <td>{{batter.bb}}</td>
+        <td>{{batter.so}}</td>
+        <td>{{batter.avg}}</td>
+    </tr>
+</table>

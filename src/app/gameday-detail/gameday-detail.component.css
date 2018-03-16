@@ -1,0 +1,26 @@
+th:nth-of-type(1),
+td:nth-of-type(1) {
+    padding-right: 20px;
+}
+
+th:nth-of-type(10),
+td:nth-of-type(10),
+th:nth-of-type(11),
+td:nth-of-type(11),
+th:nth-of-type(12),
+td:nth-of-type(12) {
+    padding-right: 10px;
+}
+
+div {
+    text-align: center;
+}
+
+div a {
+    margin: 10px;
+    padding: 10px;
+}
+
+a.currentTeam {
+    font-weight: bold;
+}

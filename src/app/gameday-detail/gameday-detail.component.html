@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="linescore">
+        <table>
+            <tr>
+                <th></th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>R</th>
+                <th>H</th>
+                <th>E</th>
+            </tr>
+            <tr>
+                <td>{{homeTeam.teamCode.toUpperCase()}}</td>
+                <td>{{homeTeam.innings[0]}}</td>
+                <td>{{homeTeam.innings[1]}}</td>
+                <td>{{homeTeam.innings[2]}}</td>
+                <td>{{homeTeam.innings[3]}}</td>
+                <td>{{homeTeam.innings[4]}}</td>
+                <td>{{homeTeam.innings[5]}}</td>
+                <td>{{homeTeam.innings[6]}}</td>
+                <td>{{homeTeam.innings[7]}}</td>
+                <td>{{homeTeam.innings[8]}}</td>
+                <td>{{homeTeam.teamRuns}}</td>
+                <td>{{homeTeam.teamHits}}</td>
+                <td>{{homeTeam.teamErrors}}</td>
+            </tr>
+            <tr>
+                <td>{{awayTeam.teamCode.toUpperCase()}}</td>
+                <td>{{awayTeam.innings[0]}}</td>
+                <td>{{awayTeam.innings[1]}}</td>
+                <td>{{awayTeam.innings[2]}}</td>
+                <td>{{awayTeam.innings[3]}}</td>
+                <td>{{awayTeam.innings[4]}}</td>
+                <td>{{awayTeam.innings[5]}}</td>
+                <td>{{awayTeam.innings[6]}}</td>
+                <td>{{awayTeam.innings[7]}}</td>
+                <td>{{awayTeam.innings[8]}}</td>
+                <td>{{awayTeam.teamRuns}}</td>
+                <td>{{awayTeam.teamHits}}</td>
+                <td>{{awayTeam.teamErrors}}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <a [ngClass]="{'currentTeam' : currentTeam.teamName === homeTeam.teamName}" (click)="showBatters(homeTeam)">{{homeTeam.teamName}}</a>|<a [ngClass]="{'currentTeam' : currentTeam.teamName === awayTeam.teamName}" (click)="showBatters(awayTeam)">{{awayTeam.teamName}}</a>
+    </div>
+
+
+    <app-batter-info *ngIf="currentTeam" [team]="currentTeam"></app-batter-info>
+</div>
