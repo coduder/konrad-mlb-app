@@ -1,10 +1,18 @@
 <div class="container">
     <div class="header">
         <h1>
-            <a (click)="prevGameDay()"> &lt;- </a>
+            <a *ngIf="!showDetails" (click)="prevGameDay()"> &lt;- </a>
             <a routerLink="/">{{date.toDateString()}} </a>
-            <a (click)="nextGameDay()"> -&gt; </a>
+            <a *ngIf="!showDetails" (click)="nextGameDay()"> -&gt; </a>
         </h1>
+        <ng-container *ngIf="!showDetails">
+            <label for="favoriteTeam">Favorite Team</label>
+            <!--Two-way Bind favoriteTeam to selection, will automatically update view on new selection-->
+            <select id="favoriteTeam" [(ngModel)]="favoriteTeam">
+                <option *ngFor="let team of teams" [ngValue]="team">{{team}}</option>
+            </select>
+        </ng-container>
+
         <a *ngIf="showDetails" (click)="hideGameDetails()">Return to summary</a>
     </div>
     <ng-container *ngIf="!showDetails; else detailsView">

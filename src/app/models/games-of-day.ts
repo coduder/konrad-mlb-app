@@ -9,7 +9,8 @@ export class GamesOfDay {
         public month: string,
         public year: string,
         public nextDayDate: string,    // next day games were played on (for quickly moving through api)
-        public games: GameSummary[]          // all games played on this day
-    ) {}
+        public games: GameSummary[],          // all games played on this day
+        public teams: string[]
+) {}
 
 }

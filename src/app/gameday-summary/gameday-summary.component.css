@@ -1,8 +1,13 @@
-.container {
+.container,
+.header {
     background-color: black;
     color: white;
     display: flex;
     flex-flow: column;
+}
+
+.header {
+    align-items: center;
 }
 
 .indv-game {
@@ -35,16 +40,23 @@ div.favoriteTeam {
 h1 {
     text-align: center;
     font-size: 1rem;
-    padding: 20px;
+    margin: 20px;
+    flex: 1;
 }
 
 p {
     display: inline-block;
 }
 
-.header>a {
+.header>a,
+.header>select,
+.header>label {
     display: block;
-    margin: 0 auto;
-    width: 100%;
+    flex: 1;
     text-align: center;
+}
+
+select {
+    margin: 5px 0 20px 0;
+    width: 150px;
 }

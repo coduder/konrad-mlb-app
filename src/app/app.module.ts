@@ -44,7 +44,9 @@ import { BatterInfoComponent } from './batter-info/batter-info.component';
       { path: 'games/:date/:id', component: GamedayDetailComponent},
     ])
   ],
-  providers: [MlbGameService],
+  providers: [
+    MlbGameService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

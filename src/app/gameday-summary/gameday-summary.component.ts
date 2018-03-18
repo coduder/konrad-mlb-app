@@ -18,9 +18,10 @@ export class GamedaySummaryComponent {
   games$: Observable<GameSummary[]>;
   games: GamesOfDay;
   date: Date;
-  showDetails = false; // indicator if user has clicked on game and wants to see details
+  showDetails = false;        // indicator if user has clicked on game and wants to see details
   boxscore: Boxscore;
-  favoriteTeam = 'Blue Jays'; // favorite team to check against in *ngFor so can set flex order to 1
+  teams: string[];            // all teams playing on this.date (populates favorite team array)
+  favoriteTeam = 'Blue Jays'; // 2-way bound to user selection value, use flex order 1 to display at top, set class with ngClass
 
   constructor(
     private router: Router,
@@ -33,6 +34,7 @@ export class GamedaySummaryComponent {
         this.games$ = this.mlbService.getGamesForDate(this.date)
         .map(gamesObj => {
           this.games = gamesObj;
+          this.teams = gamesObj.teams.sort();
           return gamesObj.games;
         });
 
@@ -41,7 +43,7 @@ export class GamedaySummaryComponent {
     }
 
   /**
-   * Hides details component and clears boxscore so new details can be loaded 
+   * Hides details component and clears boxscore so new details can be loaded
    * for different team selection
    */
   hideGameDetails() {

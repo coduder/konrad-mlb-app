@@ -12,7 +12,7 @@ import { Team } from './models/team';
 
 @Injectable()
 export class MlbGameService {
-  mlbAPIUrl = 'http://gd2.mlb.com';
+  mlbAPIUrl = 'https://gd2.mlb.com';
 
   constructor(private http: HttpClient) { }
 
@@ -42,6 +42,7 @@ export class MlbGameService {
         console.log('full gameDay JSON data from api');
         console.log(gamesRes);
         let games: GameSummary[] = [];
+        const teams: string[] = [];
 
         // Only set game data if games occurred
         if ( gamesRes['game'] ) {
@@ -52,17 +53,24 @@ export class MlbGameService {
 
           // build array of GameSummary objects from given day
           for (let i = 0; i < indvGameLevelRes.length; i++) {
+
+            const currentGame = indvGameLevelRes[i];
+
+            // add team names to team array
+            teams.push(currentGame['home_team_name']);
+            teams.push(currentGame['away_team_name']);
+
             // creates Linescore only if one exists
             if (indvGameLevelRes[i]['linescore']) {
               const linescore = new Linescore(
-                indvGameLevelRes[i]['linescore']['e'],
-                indvGameLevelRes[i]['linescore']['r']);
+                currentGame['linescore']['e'],
+                currentGame['linescore']['r']);
 
               games[i] = new GameSummary(
-                indvGameLevelRes[i]['home_team_name'],
-                indvGameLevelRes[i]['away_team_name'],
-                indvGameLevelRes[i]['status']['status'],
-                indvGameLevelRes[i]['game_data_directory'],
+                currentGame['home_team_name'],
+                currentGame['away_team_name'],
+                currentGame['status']['status'],
+                currentGame['game_data_directory'],
                 linescore,
                 ((+linescore.result.home > +linescore.result.away) // set winner
                   ? 'h'
@@ -72,10 +80,10 @@ export class MlbGameService {
               // no line score exists, therefore no winner
             } else {
               games[i] = new GameSummary(
-                indvGameLevelRes[i]['home_team_name'],
-                indvGameLevelRes[i]['away_team_name'],
-                indvGameLevelRes[i]['status']['status'],
-                indvGameLevelRes[i]['game_data_directory'],
+                currentGame['home_team_name'],
+                currentGame['away_team_name'],
+                currentGame['status']['status'],
+                currentGame['game_data_directory'],
                 null,
                 null
               );
@@ -91,7 +99,8 @@ export class MlbGameService {
           gamesRes['month'],
           gamesRes['year'],
           gamesRes['next_day_date'],
-          games
+          games,
+          teams
         );
       });
   }
